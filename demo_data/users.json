@@ -1,0 +1,26 @@
+{
+  "admin": {
+    "name": "Demo Admin",
+    "role": "admin",
+    "salt": "5af20f21494d18606441b6c3399878f3",
+    "hash": "c85ec40924373fdb542dde87b81203f617d3ecde27e9580f24f155e8b4f8c838"
+  },
+  "parts": {
+    "name": "Demo Parts",
+    "role": "parts",
+    "salt": "eb050b3c88009ecc12ba62a28eba87c6",
+    "hash": "7fa5e88b806bb086fd9aa5a9507a571b245321884fc7f5c759247485885d9e61"
+  },
+  "sales": {
+    "name": "Demo Sales",
+    "role": "sales",
+    "salt": "a152bcfd522948665d568414484dd64a",
+    "hash": "121c53d49fb8ec798ea6b82490c1cf6e64867d0c72aa4d537eb8b1f325a4c980"
+  },
+  "service": {
+    "name": "Demo Service",
+    "role": "service",
+    "salt": "9496fc4e35d3b49d26176ca5c3eee80e",
+    "hash": "e796bd76708ab10e40a5b85806222290df66c6e056d46b81b1f934125c788a6a"
+  }
+}
