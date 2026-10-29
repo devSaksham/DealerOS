@@ -2,3 +2,5 @@ data/
 __pycache__/
 *.xlsx
 .streamlit/secrets.toml
+static/
+.demo/

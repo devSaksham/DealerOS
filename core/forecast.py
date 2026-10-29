@@ -156,7 +156,9 @@ def backtest(history, months_back=6, **policy):
                             ("avg_6m", train.iloc[:, -6:].mean(axis=1))]:
             err[name] += float((guess.reindex(parts).fillna(0) - actual).abs().sum())
         n += len(parts)
-        out = set(t.index[(t.closing <= 0) & (t.issued > 0)])  # sold out during month m
+        # Sold out during month m, having started it with stock. Parts already at zero would be
+        # flagged just for being empty, which isn't foresight, so they don't count.
+        out = set(t.index[(t.closing <= 0) & (t.issued > 0)]) & set(fc.index[fc.stock > 0])
         fast, flagged = set(fc.index[fc.rate >= 1]), set(reorder(fc, **policy).index)
         out_all, hit_all = out_all + len(out), hit_all + len(out & flagged)
         out_fast, hit_fast = out_fast + len(out & fast), hit_fast + len(out & fast & flagged)

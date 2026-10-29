@@ -8,7 +8,7 @@ from core import forecast as F
 from core import store
 
 user = st.session_state.user
-s = store.settings()
+s = st.session_state.get("settings") or store.settings()  # demo: per visitor, not saved
 today = dt.date.today()
 
 
@@ -48,7 +48,11 @@ with tabs[0]:
                              format_func=lambda v: {1.0: "Lean (84%)", 1.28: "Normal (90%)",
                                                     1.65: "Safe (95%)", 2.05: "Very safe (98%)"}[v])
         if st.button("Save settings"):
-            store.save_settings({**s, "lead_days": lead, "review_days": review, "z": z})
+            new = {**s, "lead_days": lead, "review_days": review, "z": z}
+            if store.DEMO:
+                st.session_state.settings = new
+            else:
+                store.save_settings(new)
             st.rerun()
     show = orders.reset_index()[["part", "desc", "category", "stock", "rate", "days_left", "order", "price", "order_value"]]
     st.dataframe(show, hide_index=True, width="stretch", column_config={

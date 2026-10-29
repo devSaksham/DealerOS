@@ -13,8 +13,11 @@ TSB (Teunter–Syntetos–Babai), a forecasting method made for spare parts that
 Months where demand couldn't be seen (no stock at all, or the COVID lockdown) are skipped rather than counted as zero.
 
 Backtest on the real dealership data (2018–20, replaying 6 months one month ahead):
-- Average error is 13% lower than "same as last month".
-- It flagged 62 of 78 stockouts of fast-moving parts a month before they happened.
+- Average error is 13% lower than "same as last month", and on par with a 6-month average (1.22 vs 1.16).
+- On top of that average, the model carries the uncertainty that the safety stock needs and lets dying parts fade out.
+- It flagged **47 of 63 (75%)** stockouts of fast-moving parts a month before they happened. This counts only parts that started the month with stock; parts already at zero would be flagged just for being empty.
+
+**To see it learn in the demo:** upload `sample_upload/hirise_2026-09.csv` on the Upload HiRise tab. That month is held back from the demo history, and the table shows how each part's forecast changed.
 
 ## Run
 ```

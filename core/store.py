@@ -12,9 +12,10 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = Path(os.environ.get("DEALEROS_DATA", ROOT / "data"))
-DEMO = ROOT / "demo_data"
+DEMO_DIR = ROOT / "demo_data"
 HISTORY, DAILY, USERS, SETTINGS = (DATA / n for n in ("history.csv", "daily.csv", "users.json", "settings.json"))
 
+DEMO = bool(os.environ.get("DEALEROS_DEMO"))  # public demo: no shared settings or user changes
 ROLES = ["admin", "parts", "sales", "service"]
 DEFAULT_SETTINGS = {"dealer_name": "Demo Honda Dealership", "lead_days": 10, "review_days": 7, "z": 1.65}
 
@@ -22,7 +23,7 @@ DEFAULT_SETTINGS = {"dealer_name": "Demo Honda Dealership", "lead_days": 10, "re
 def _seed():
     """First run: start from the demo data so the app is never empty."""
     DATA.mkdir(parents=True, exist_ok=True)
-    for f in DEMO.glob("*"):
+    for f in DEMO_DIR.glob("*"):
         if not (DATA / f.name).exists():
             shutil.copy(f, DATA / f.name)
 

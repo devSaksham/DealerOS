@@ -7,6 +7,10 @@ st.title("👤 Users")
 st.dataframe(pd.DataFrame([{"username": k, "name": v["name"], "role": v["role"]} for k, v in store.users().items()]),
              hide_index=True, width="stretch")
 
+if store.DEMO:
+    st.info("User and dealership settings are read-only in the public demo.")
+    st.stop()
+
 st.subheader("Add or reset a user")
 with st.form("user", clear_on_submit=True):
     c = st.columns(4)

@@ -2,25 +2,25 @@
   "admin": {
     "name": "Demo Admin",
     "role": "admin",
-    "salt": "5af20f21494d18606441b6c3399878f3",
-    "hash": "c85ec40924373fdb542dde87b81203f617d3ecde27e9580f24f155e8b4f8c838"
+    "salt": "172dc7e5bde7841580f8745c0834297a",
+    "hash": "768df74d642ae9e88f2757597758394448a10ed5571ad20c7b32dcb837bcf53b"
   },
   "parts": {
     "name": "Demo Parts",
     "role": "parts",
-    "salt": "eb050b3c88009ecc12ba62a28eba87c6",
-    "hash": "7fa5e88b806bb086fd9aa5a9507a571b245321884fc7f5c759247485885d9e61"
+    "salt": "a8f2e052e39eb4ff62564261b16dc56c",
+    "hash": "b4584661a17734ccaeea526877de020d565cbfe97d51916335ce718b56cdbe11"
   },
   "sales": {
     "name": "Demo Sales",
     "role": "sales",
-    "salt": "a152bcfd522948665d568414484dd64a",
-    "hash": "121c53d49fb8ec798ea6b82490c1cf6e64867d0c72aa4d537eb8b1f325a4c980"
+    "salt": "b671b1daa792707f438e05dbec6e7444",
+    "hash": "140630882dfc7c07614c48fe06617eef40447eb2e48492f8f852df224395e5ca"
   },
   "service": {
     "name": "Demo Service",
     "role": "service",
-    "salt": "9496fc4e35d3b49d26176ca5c3eee80e",
-    "hash": "e796bd76708ab10e40a5b85806222290df66c6e056d46b81b1f934125c788a6a"
+    "salt": "912cedf7c9f2ff73cae72368f9e544b8",
+    "hash": "d830d47c6fc30268add5817e6d51edae5308b59e148f34c5d0fe8e764af55b63"
   }
 }
