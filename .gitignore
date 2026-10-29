@@ -5,4 +5,4 @@ __pycache__/
 static/
 .demo/
 .agents/
-.claude/skills/
+.claude/skills/developing-with-streamlit
