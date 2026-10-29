@@ -17,7 +17,8 @@ HISTORY, DAILY, USERS, SETTINGS = (DATA / n for n in ("history.csv", "daily.csv"
 
 DEMO = bool(os.environ.get("DEALEROS_DEMO"))  # public demo: no shared settings or user changes
 ROLES = ["admin", "parts", "sales", "service"]
-DEFAULT_SETTINGS = {"dealer_name": "Demo Honda Dealership", "lead_days": 10, "review_days": 7, "z": 1.65}
+DEFAULT_SETTINGS = {"dealer_name": "Demo Honda Dealership", "lead_days": 10, "review_days": 7, "z": 1.65,
+                    "min_active": 3, "calendar": True, "report_emails": [], "report_lang": "en"}
 
 
 def _seed():
