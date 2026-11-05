@@ -1,6 +1,6 @@
 # DealerOS
 
-A dashboard for a Honda two-wheeler dealership. One login, a role per person (admin, parts, sales, service), and a module per department. **Parts** is the first module: it predicts demand for every part from HiRise stock reports and tells the parts manager what to order this week, before the shelf runs empty.
+A dashboard for a Honda two-wheeler dealership. One login, a role per person (admin, parts, sales, service), and a module per department. **Parts** is the first module and the only one built so far (Sales and Service are placeholders in the menu): it predicts demand for every part from HiRise stock reports and tells the parts manager what to order this week, before the shelf runs empty.
 
 ## Parts module
 - **Order list:** what to order this week. It covers **regular parts**, meaning parts sold in at least N of 12 months; N is a setting and the screen shows how many parts each N gives. Other parts are ordered only when a customer asked for them and we didn't have them. Rows are sorted by how soon each part runs out.
@@ -30,8 +30,14 @@ Months where demand couldn't be seen (no stock at all, or the COVID lockdown) ar
 
 **To see it learn in the demo:** upload `sample_upload/hirise_2026-09.csv` on the Upload HiRise tab.
 
+## Research
+`research/` is where forecasting ideas are tested before they go into the model:
+- `methods.md`: papers on spare-parts forecasting, what each one claims, and whether it was adopted here.
+- `experiments.py`: scores candidate methods on the same test months for per-part error, total-demand error, and an inventory simulation (fill rate against stock value). A method replaces the current one only if it is no worse on all three. Run it with `python research/experiments.py <export.csv>`.
+- `competitors.md`: a feature comparison with dealer-parts planning tools, built from public material only.
+
 ## Run
-```
+```bash
 pip install -r requirements.txt
 streamlit run app.py
 ```
@@ -49,6 +55,21 @@ SMTP_USER = "you@gmail.com"
 SMTP_PASSWORD = "<app password>"
 ```
 The admin adds recipients on the Users page. Email is off in the public demo.
+
+## Layout
+```
+app.py              sign-in, roles, sidebar, module navigation
+modules/parts.py    Parts module: order list, counter log, report, trends, upload, backtest
+modules/admin.py    users and report recipients
+core/forecast.py    calendar factor + TSB forecast, order quantities, backtest
+core/report.py      daily report and email sending
+core/store.py       data files, users, settings; seeds from demo_data/
+core/i18n.py        English / Hindi / Hinglish strings
+make_demo.py        builds the scrambled demo dataset
+demo_data/          synthetic history and demo users
+sample_upload/      a HiRise export to try the upload flow
+research/           methods, experiments, competitor notes
+```
 
 ## Add a department
 Write `modules/<name>.py` and add one line to `MODULES` in `app.py` with the roles that can see it.
